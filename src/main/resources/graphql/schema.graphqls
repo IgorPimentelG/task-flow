@@ -1,0 +1,45 @@
+type Collaborator {
+    id: ID!
+    name: String!
+    email: String!
+    role: String!
+    tasks: [Task]
+}
+
+type Task {
+    id: ID!
+    title: String!
+    description: String!
+    estimatedHours: Int!
+    workedHours: Int!
+    owner: Collaborator!
+    notes: [Note]
+    createdAt: String!
+    updatedAt: String!
+}
+
+type Note {
+    id: ID!
+    title: String!
+    content: String!
+    author: Collaborator!
+    task: Task!
+    createdAt: String!
+    updatedAt: String!
+}
+
+input CollaboratorInput {
+    name: String!
+    email: String!
+    role: String!
+}
+
+type Query {
+    collaboratorById(id: ID!): Collaborator
+    collaboratorList: [Collaborator]
+}
+
+type Mutation {
+    createCollaborator(input: CollaboratorInput!): Collaborator
+    updateCollaborator(id: ID!, input: CollaboratorInput!): Collaborator
+}
