@@ -3,11 +3,12 @@ spring:
     name: Task Flow
   data:
     mongodb:
-      authentication-database: false
+      authentication-database: admin
       username: admin
       password: admin
       host: localhost
       port: 27017
+      database: taskflow
   graphql:
     graphiql:
       enabled: true
