@@ -3,7 +3,6 @@ type Collaborator {
     name: String!
     email: String!
     role: String!
-    tasks: [Task]
 }
 
 type Task {
@@ -23,7 +22,6 @@ type Note {
     title: String!
     content: String!
     author: Collaborator!
-    task: Task!
     createdAt: String!
     updatedAt: String!
 }
@@ -34,12 +32,24 @@ input CollaboratorInput {
     role: String!
 }
 
+input TaskInput {
+    title: String!
+    description: String!
+    estimatedHours: Int!
+    workedHours: Int
+    ownerId: String!
+}
+
 type Query {
     collaboratorById(id: ID!): Collaborator
     collaboratorList: [Collaborator]
+    taskById(id: ID!): Task
+    taskList: [Task]
 }
 
 type Mutation {
     createCollaborator(input: CollaboratorInput!): Collaborator
     updateCollaborator(id: ID!, input: CollaboratorInput!): Collaborator
+    createTask(input: TaskInput): Task
+    updateTask(id: ID!, input: TaskInput!): Task
 }

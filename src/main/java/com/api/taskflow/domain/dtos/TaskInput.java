@@ -7,5 +7,5 @@ public record TaskInput(
   String description,
   Integer estimatedHours,
   Integer workedHours,
-  UUID collaboratorId
+  UUID ownerId
 ) {}

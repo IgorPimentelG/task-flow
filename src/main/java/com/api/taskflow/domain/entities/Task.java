@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,13 +26,13 @@ public class Task {
 	private Integer estimatedHours;
 
 	@Field("worked_hours")
-	private Integer workedHours;
+	private Integer workedHours = 0;
 
 	@DBRef
-	private Collaborator collaborator;
+	private Collaborator owner;
 
 	@DBRef
-	private List<Note> notes;
+	private List<Note> notes = new ArrayList<>();
 
 	@Field("created_at")
 	private LocalDateTime createdAt;

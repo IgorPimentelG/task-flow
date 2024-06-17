@@ -10,7 +10,7 @@ public record TaskOutput(
   String description,
   Integer estimatedHours,
   Integer workedHours,
-  CollaboratorOutput author,
+  CollaboratorOutput owner,
   Collection<NoteOutput> notes,
   LocalDateTime createdAt,
   LocalDateTime updatedAt
