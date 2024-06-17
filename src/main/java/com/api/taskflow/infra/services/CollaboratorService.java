@@ -41,7 +41,7 @@ public class CollaboratorService {
 		return mapper.map(collaborators);
 	}
 
-	private Collaborator find(UUID id) {
+	public Collaborator find(UUID id) {
 		return repository.findById(id)
 		  .orElseThrow(() -> new NotFoundException("Collaborator not found."));
 	}
