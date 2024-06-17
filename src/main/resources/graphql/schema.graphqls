@@ -40,16 +40,27 @@ input TaskInput {
     ownerId: String!
 }
 
+input NoteInput {
+    title: String!
+    content: String!
+    authorId: String!
+}
+
 type Query {
     collaboratorById(id: ID!): Collaborator
     collaboratorList: [Collaborator]
     taskById(id: ID!): Task
     taskList: [Task]
+    noteById(id: ID!): Note
+    noteList: [Note]
 }
 
 type Mutation {
     createCollaborator(input: CollaboratorInput!): Collaborator
     updateCollaborator(id: ID!, input: CollaboratorInput!): Collaborator
-    createTask(input: TaskInput): Task
+    createTask(input: TaskInput!): Task
     updateTask(id: ID!, input: TaskInput!): Task
+    createNote(input: NoteInput!): Note
+    updateNote(id: ID!, input: NoteInput!): Note
+    deleteNote(id: ID!): Note
 }

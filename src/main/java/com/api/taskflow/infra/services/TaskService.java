@@ -1,6 +1,7 @@
 package com.api.taskflow.infra.services;
 
 import com.api.taskflow.domain.dtos.*;
+import com.api.taskflow.domain.entities.Note;
 import com.api.taskflow.domain.entities.Task;
 import com.api.taskflow.infra.errors.NotFoundException;
 import com.api.taskflow.infra.mappers.TaskMapper;
@@ -50,6 +51,18 @@ public class TaskService {
 	public Collection<TaskOutput> listAll() {
 		var tasks = repository.findAll();
 		return mapper.map(tasks);
+	}
+
+	public void assignNote(UUID taskId, Note note) {
+		var task = find(taskId);
+		task.addNote(note);
+		repository.save(task);
+	}
+
+	public void unassignNote(UUID taskId, Note note) {
+		var task = find(taskId);
+		task.removeNote(note);
+		repository.save(task);
 	}
 
 	private Task find(UUID id) {

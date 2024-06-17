@@ -40,4 +40,12 @@ public class Task {
 	@LastModifiedDate
 	@Field("updated_at")
 	private LocalDateTime updatedAt;
+
+	public void addNote(Note note) {
+		notes.add(note);
+	}
+
+	public void removeNote(Note note) {
+		notes.remove(note);
+	}
 }

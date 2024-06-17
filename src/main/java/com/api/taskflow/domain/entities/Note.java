@@ -23,9 +23,6 @@ public class Note {
 	@DBRef
 	private Collaborator author;
 
-	@DBRef
-	private Task task;
-
 	@Field("created_at")
 	private LocalDateTime createdAt;
 
